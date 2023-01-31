@@ -33,7 +33,7 @@
 		class="qr-code img-thumbnail img-responsive" />
 
 <h4><label>
-<a style="color:black"href="upi://pay?cu=INR&pa=nikhiljain@paytm">nikhiljain@paytm</a>
+<a class="link" style="color:black" href="upi://pay?cu=INR&pa=nikhiljain@paytm">nikhiljain@paytm</a>
 </label> <a class="download-link" href="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm" download><img src="download.png" width="20vw"></a></h4>
 
 
@@ -98,11 +98,15 @@
 		let finalURL =
 'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm%26am%3D' +
 		htmlEncode($('#content').val())
+		let finalURL2 =
+'upi://pay?cu=INR&pa=nikhiljain@paytm&am=' +
+		htmlEncode($('#content').val())
 
 		// Replace the src of the image with
 		// the QR code image
 		$('.qr-code').attr('src', finalURL);
 		$('.download-link').attr('href', finalURL);
+		$('.link').attr('href', finalURL2);
 	});
 	});
 
