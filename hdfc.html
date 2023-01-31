@@ -34,7 +34,7 @@
 
 <h4><label>
 9467266999@hdfcbank
-</label></h4>
+</label> <a class="download-link" href="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9467266999%40hdfcbank%26pn%3DJain+Mobile" download><img src="download.png" width="20vw"></a> <img id=shareBtn src="share.png" width="12vw"></h4>
 
 	
 </div>
@@ -111,6 +111,7 @@
 		// Replace the src of the image with
 		// the QR code image
 		$('.qr-code').attr('src', finalURL);
+		$('.download-link').attr('href', finalURL);
 	});
 	});
 
@@ -141,6 +142,40 @@
 	});
 	});
 </script>
+
+<script>
+        document.querySelector('#shareBtn')
+        .addEventListener('click', event => {
+  
+            // Fallback, Tries to use API only
+            // if navigator.share function is
+            // available
+            if (navigator.share) {
+                navigator.share({
+  
+                    // Title that occurs over
+                    // web share dialog
+                    title: 'Pay Using',
+  
+                    // URL to share
+                    url: 'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9467266999%40hdfcbank%26pn%3DJain+Mobile'
+					
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(err => {
+  
+                    // Handle errors, if occured
+                    console.log(
+                    "Error while using Web share API:");
+                    console.log(err);
+                });
+            } else {
+  
+                // Alerts user if API not available 
+                alert("Browser doesn't support this API !");
+            }
+        })
+    </script>
 </body>
 
 </html>

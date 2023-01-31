@@ -29,12 +29,13 @@
 	this will change according to the
 	data entered later -->
 	<img src=
-"http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9468058222-1%40axl%26pn%3DJain+Mobile"
+"http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm"
 		class="qr-code img-thumbnail img-responsive" />
 
 <h4><label>
-9468058222-1@axl
-</label> <a class="download-link" href="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9468058222-1%40axl%26pn%3DJain+Mobile" download><img src="download.png" width="20vw"></a> <img id=shareBtn src="share.png" width="12vw"></h4>
+nikhiljain@paytm
+</label> <a class="download-link" href="http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm" download><img src="download.png" width="20vw"></a> <img id=shareBtn src="share.png" width="12vw"></h4>
+
 
 	
 </div>
@@ -68,22 +69,46 @@
 		<p></p>
 		<p></p>
 		</div>
-		<div class="text-center">
-		<button type="button" class=
-			"btn btn-default" id="hdfc">
-			HDFC Bank
-		</button>
-		<button type="button" class=
-			"btn btn-default" id="indus">
-			IndusInd Bank
-		</button>
-		</div>
 	</div>
 	</div>
 </div>
 <script src=
 	"https://code.jquery.com/jquery-3.5.1.js">
 </script>
+  
+    <script>
+        document.querySelector('#shareBtn')
+        .addEventListener('click', event => {
+  
+            // Fallback, Tries to use API only
+            // if navigator.share function is
+            // available
+            if (navigator.share) {
+                navigator.share({
+  
+                    // Title that occurs over
+                    // web share dialog
+                    title: 'Pay Using',
+  
+                    // URL to share
+                    url: 'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm'
+					
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch(err => {
+  
+                    // Handle errors, if occured
+                    console.log(
+                    "Error while using Web share API:");
+                    console.log(err);
+                });
+            } else {
+  
+                // Alerts user if API not available 
+                alert("Browser doesn't support this API !");
+            }
+        })
+    </script>
 
 <script>
 	// Function to HTML encode the text
@@ -105,7 +130,7 @@
 		// used to generate the QR Code
 		// with the given data
 		let finalURL =
-'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9468058222-1%40axl%26pn%3DJain+Mobile%26am%3D' +
+'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3Dnikhiljain%40paytm%26am%3D' +
 		htmlEncode($('#content').val())
 
 		// Replace the src of the image with
@@ -115,68 +140,7 @@
 	});
 	});
 
-	$(function () {
-
-	// Specify an onclick function
-	// for the generate button
-	$('#indus').click(function () {
-
-		// Generate the link that would be
-		// used to generate the QR Code
-		// with the given data
-		location.href = "index.html"
-
-	});
-	});
-	$(function () {
-
-	// Specify an onclick function
-	// for the generate button
-	$('#hdfc').click(function () {
-
-		// Generate the link that would be
-		// used to generate the QR Code
-		// with the given data
-		location.href = "hdfc.html"
-
-	});
-	});
 </script>
-
-<script>
-        document.querySelector('#shareBtn')
-        .addEventListener('click', event => {
-  
-            // Fallback, Tries to use API only
-            // if navigator.share function is
-            // available
-            if (navigator.share) {
-                navigator.share({
-  
-                    // Title that occurs over
-                    // web share dialog
-                    title: 'Pay Using',
-  
-                    // URL to share
-                    url: 'http://chart.apis.google.com/chart?cht=qr&choe=UTF-8&chs=250x250&chld=H&chl=upi%3A%2F%2Fpay%3Fcu%3DINR%26pa%3D9468058222-1%40axl%26pn%3DJain+Mobile'
-					
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                }).catch(err => {
-  
-                    // Handle errors, if occured
-                    console.log(
-                    "Error while using Web share API:");
-                    console.log(err);
-                });
-            } else {
-  
-                // Alerts user if API not available 
-                alert("Browser doesn't support this API !");
-            }
-        })
-    </script>
-
 </body>
 
 </html>
